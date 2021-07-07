@@ -1,71 +1,91 @@
-import Header from "./components/Header";
-import Articles from "./components/Articles";
 import "./index.css";
-import {useState,useEffect} from 'react';
 
-function Footer(props) {
-  return (
-    <footer>
-    <h1>Hello, this will be the footer, {props.foo}!</h1>
-    </footer>
-  )
-}
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+import Header from "./common/Header";
+import Footer from "./common/Footer";
+import Home from "./home/Home";
+import AboutUs from "./aboutUs/AboutUs";
 
 function App() {
+  const data1 = "Egg";
 
-  const data1 = 'Egg'
-
-  const [articles, setArticles] = useState([])
+  const [smallArticles, setSmallArticles] = useState([]);
+  const [majorArticle, setMajorArticle] = useState({});
 
   useEffect(() => {
-    const getArticles = async () => {
-      const articlesFromServer = await fetchArticles()
-      setArticles(articlesFromServer)
-    }
+    const getSmallArticles = async () => {
+      const smallArticlesFromServer = await fetchSmallArticles();
+      setSmallArticles(smallArticlesFromServer);
+    };
 
-    getArticles()
-  }, [])
+    getSmallArticles();
 
-const fetchArticles = async () => {
-  const res = await fetch('http://localhost:5000/articles')
-  const data = await res.json()
+    const getMajorArticle = async () => {
+      const majorArticleFromServer = await fetchMajorArticle();
+      setMajorArticle(majorArticleFromServer);
+    };
 
-  return data
-}
+    getMajorArticle();
+  }, []);
 
-const deleteArticle = async (id) => {
-  await fetch(`http://localhost:5000/articles/${id}`, {
-    method: 'DELETE'
-  })
+  const fetchSmallArticles = async () => {
+    const res = await fetch("http://localhost:5000/smallArticles");
+    const data = await res.json();
 
-  setArticles(articles.filter((article) => article.id !== id))
-}
+    return data;
+  };
 
-const addTask = async (article) => {
-  const res = await fetch(`http://localhost:5000/article`, {
-  method: 'POST',
-  headers: {
-    'Content-type': 'application/json'
-  },
-    body: JSON.stringify(article)
-  })
+  const fetchMajorArticle = async () => {
+    const res = await fetch("http://localhost:5000/majorArticle");
+    const data = await res.json();
 
-  const data = res.json()
-
-  setArticles([...articles, data])
-
-}
+    return data;
+  };
 
   return (
-    <div className="container">
-      <Header foo="Egg"/>
+    <Router>
       <div className="container">
-        <h1>My app!</h1>
-        <Articles articles={articles}/>
+        <Header foo="Egg" />
+        <div>
+          {/* A <Switch> looks through its children <Route>s and
+        renders the first one that matches the current URL. */}
+          <Switch>
+            <Route path="/aboutUs">
+              <AboutUs />
+            </Route>
+            <Route path="/">
+              <Home smallArticles={smallArticles} majorArticle={majorArticle}/>
+            </Route>
+          </Switch>
+        </div>
+        <Footer foo={data1} />
       </div>
-      <Footer foo={data1}/>
-    </div>
+    </Router>
   );
 }
 
 export default App;
+
+// const addArticle = async (article) => {
+//   const res = await fetch(`http://localhost:5000/articles`, {
+//   method: 'POST',
+//   headers: {
+//     'Content-type': 'application/json'
+//   },
+//     body: JSON.stringify(article)
+//   })
+
+//   const data = res.json()
+
+//   setArticles([...articles, data])
+// }
+
+// const deleteArticle = async (id) => {
+//   await fetch(`http://localhost:5000/articles/${id}`, {
+//     method: 'DELETE'
+//   })
+
+//   setArticles(articles.filter((article) => article.id !== id))
+// }

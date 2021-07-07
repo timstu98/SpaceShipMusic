@@ -1,0 +1,19 @@
+.article {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer; }
+
+.article.unreleased {
+  border-left: 5px solid green; }
+
+.article h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
+/*# sourceMappingURL=home.css.map */
+
+.major-article {
+  font-size: 20px;
+}

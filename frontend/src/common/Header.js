@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import NavItem from './NavItem';
+import './Header.css';
 
 
 const Header = (props) => {
@@ -10,7 +11,10 @@ const Header = (props) => {
     return (
         <header>
             <h1>{props.foo}</h1>
-            <NavItem color="red" text="About Us" onClick={onClick} />
+            <nav>
+            <NavItem color="red" text="About Us" onClick={onClick} to={"/aboutUs"}/>
+            <NavItem color="red" text="Home" onClick={onClick} to={"/"}/>
+            </nav>
         </header>
     )
 }
