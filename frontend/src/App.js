@@ -48,7 +48,7 @@ function App() {
     <Router>
       <div className="container">
         <Header foo="Egg" />
-        <div>
+        <div className="content">
           {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
           <Switch>

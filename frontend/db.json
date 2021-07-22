@@ -8,12 +8,30 @@
   },
   {
     "id": 2,
+    "title": "My first blog, will be about rubbish",
+    "text": "will be about rubbish as I said",
+    "day": "Feb 5th at 2:30pm"
+  },
+  {
+    "id": 3,
+    "title": "My first blog, will be about rubbish",
+    "text": "will be about rubbish as I said",
+    "day": "Feb 5th at 2:30pm"
+  },
+  {
+    "id": 4,
+    "title": "My first blog, will be about rubbish",
+    "text": "will be about rubbish as I said",
+    "day": "Feb 5th at 2:30pm"
+  },
+  {
+    "id": 5,
     "title": "My second blog, will be about rubbish",
     "text": "will be about rubbish as I said",
     "day": "Feb 6th at 1:30pm"
   }],
   "majorArticle" : {
-    "id":1,
+    "id":6,
     "title": "Major Article Title here, on a cool day",
     "text": "will be about rubbish as I said",
     "day": "Feb 7th at 9:30pm"
