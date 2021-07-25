@@ -4,7 +4,7 @@ import MajorArticle from './MajorArticle';
  const Articles = ({smallArticles, majorArticle}) => {
 
     return (
-        <div>
+        <div className="articles-wrapper">
         <MajorArticle article={majorArticle}/>
         <>
             {smallArticles.map((article) => (

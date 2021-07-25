@@ -3,18 +3,18 @@ import NavItem from './NavItem';
 import './Header.css';
 
 
-const Header = (props) => {
+const Header = () => {
     const onClick = () => {
         console.log('Click')
     }
 
     return (
         <header>
-            <h1>{props.foo}</h1>
-            <nav>
+            <div><h1>SPACESHIP MUSIC COLLECTIVE</h1></div>
+            <div><nav>
             <NavItem color="red" text="About Us" onClick={onClick} to={"/aboutUs"}/>
             <NavItem color="red" text="Home" onClick={onClick} to={"/"}/>
-            </nav>
+            </nav></div>
         </header>
     )
 }

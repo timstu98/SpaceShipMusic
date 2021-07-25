@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 
 const NavItem = ({ color, text, onClick, to }) => {
     return (
+        <div className="nav-item">
         <Link to={to} ><button style={{ backgroundColor: color }} onClick={onClick} className="NavItem">{text}</button></Link>
+        </div>
     )
 }
 
